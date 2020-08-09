@@ -1,0 +1,6 @@
+ipython
+isort
+pudb
+pytest
+twine
+wheel

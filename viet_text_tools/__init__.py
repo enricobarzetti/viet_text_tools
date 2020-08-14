@@ -2,7 +2,7 @@ import string
 import re
 import unicodedata
 
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
 
 def normalize_diacritics(source, new_style=False, decomposed=False):

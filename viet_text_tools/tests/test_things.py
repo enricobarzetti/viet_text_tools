@@ -6,8 +6,12 @@ from viet_text_tools import vietnamese_sort_key
 class NormalizeDiacriticsTestCase(TestCase):
     def test(self):
         assert normalize_diacritics('hoạ') == 'họa'
-        assert normalize_diacritics('choàng') == 'chòang'
+        assert normalize_diacritics('choàng') == 'choàng'
         assert normalize_diacritics('thuỷ') == 'thủy'
+        assert normalize_diacritics('oà') == 'òa'
+        assert normalize_diacritics('toà') == 'tòa'
+        assert normalize_diacritics('toàn') == 'toàn'
+        assert normalize_diacritics('tòan') == 'toàn'
 
     def test_new_style(self):
         assert normalize_diacritics('ngòăng', new_style=True) == 'ngoằng'
@@ -16,6 +20,8 @@ class NormalizeDiacriticsTestCase(TestCase):
         assert normalize_diacritics('giừơng', new_style=True) == 'giường'
         assert normalize_diacritics('baỷ', new_style=True) == 'bảy'
         assert normalize_diacritics('cuả', new_style=True) == 'của'
+        assert normalize_diacritics('òa', new_style=True) == 'oà'
+        assert normalize_diacritics('toàn', new_style=True) == 'toàn'
 
     def test_decomposed(self):
         word = 'thuỷ'

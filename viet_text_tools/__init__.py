@@ -23,7 +23,7 @@ def normalize_diacritics(source, new_style=False, decomposed=False):
     result = re.sub(r'(?i)(?<!g)(i)([aeiouy]){}'.format(tone), r'\1\3\2', result)
     if not new_style:
         # Put tone in the symmetrical position
-        result = re.sub(r'(?i)(?<!q)([ou])([aeoy]){}'.format(tone), r'\1\3\2', result)
+        result = re.sub(r'(?i)(?<!q)([ou])([aeoy]){}(?!\w)'.format(tone), r'\1\3\2', result)
     if decomposed:
         return unicodedata.normalize('NFD', result)
     return unicodedata.normalize('NFC', result)

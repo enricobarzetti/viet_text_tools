@@ -1,17 +1,15 @@
 *.DS_Store
 *.py[co]
 
-# Setuptools files
-build/
+# Poetry
 dist/
 *.egg-info
-
-# Virtualenv files
-venv/
 
 # PyCharm files
 .idea/
 
 # Tox files
-.eggs/
 .tox/
+
+# Pytest
+.pytest_cache

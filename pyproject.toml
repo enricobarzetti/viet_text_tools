@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "viet_text_tools"
-version = "0.1.4"
+version = "0.1.6"
 description = "Functions for working with Vietnamese text"
 authors = ["Enrico Barzetti <enricobarzetti@gmail.com>"]
 readme = "README.rst"

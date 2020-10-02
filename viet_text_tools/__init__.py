@@ -1,8 +1,9 @@
 import string
 import re
 import unicodedata
+from importlib.metadata import version
 
-__version__ = '0.1.4'
+__version__ = version(__package__)
 
 
 def normalize_diacritics(source, new_style=False, decomposed=False):

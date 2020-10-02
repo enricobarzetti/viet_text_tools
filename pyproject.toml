@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "viet_text_tools"
+version = "0.1.4"
+description = "Functions for working with Vietnamese text"
+authors = ["Enrico Barzetti <enricobarzetti@gmail.com>"]
+readme = "README.rst"
+homepage = "https://github.com/enricobarzetti/viet_text_tools"
+license = "mit"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+ipython = "^7.18.1"
+isort = "^5.5.4"
+pudb = "^2019.2"
+pytest = "^6.1.0"
+tox = "^3.20.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

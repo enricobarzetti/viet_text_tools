@@ -1,5 +1,5 @@
 Viet Text Tools
-====================
+===============
 
 Functions for working with Vietnamese text
 
@@ -47,3 +47,8 @@ A key function for use with sorted() to sort Vietnamese text with the correct co
     words = ['anh', 'ba', 'áo', 'cắt', 'cá', 'cả']
     sorted(words) == ['anh', 'ba', 'cá', 'cả', 'cắt', 'áo']
     sorted(words, key=vietnamese_sort_key) == ['anh', 'áo', 'ba', 'cả', 'cá', 'cắt']
+
+vietnamese_case_insensitive_sort_key()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Same as `vietnamese_sort_key()` but case-insensitive.

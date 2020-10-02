@@ -31,7 +31,7 @@ def normalize_diacritics(source, new_style=False, decomposed=False):
 
 # Taken from CLDR - Unicode Common Locale Data Repository
 # http://demo.icu-project.org/icu-bin/locexp
-VIETNAMESE_CHARS = [' '] + list(string.punctuation) + [
+ACCENTED_CHARACTERS = [
     'a',
     'à',
     'ả',
@@ -126,18 +126,30 @@ VIETNAMESE_CHARS = [' '] + list(string.punctuation) + [
     'ỵ',
     'z',
 ]
+VIETNAMESE_CHARACTERS = list(string.punctuation) + list(string.digits) + [x.upper() for x in ACCENTED_CHARACTERS] + ACCENTED_CHARACTERS
 
 
-class OrdDict(dict):
+class VietnameseOrderDict(dict):
+    def __init__(self):
+        for i, char in enumerate(VIETNAMESE_CHARACTERS):
+            self[char] = i
+
     def __getitem__(self, k):
+        # Any characters that is not in the dictinary has its index shifted out by the number of keys in the dictionary
+        # to preserve relative order and give precedence to characters used in Vietnamese
         if k not in self:
-            return ord(k)
+            return ord(k) + len(self)
         return super().__getitem__(k)
 
 
-VIETNAMESE_ORDER = OrdDict(dict(reversed(x) for x in enumerate(VIETNAMESE_CHARS)))
+vietnamese_order_dict = VietnameseOrderDict()
 
 
 def vietnamese_sort_key(word):
     word = unicodedata.normalize('NFC', word)
-    return [VIETNAMESE_ORDER[c] for c in word.lower()]
+    return [vietnamese_order_dict[c] for c in word]
+
+
+def vietnamese_case_insensitive_sort_key(word):
+    word = unicodedata.normalize('NFC', word)
+    return [vietnamese_order_dict[c] for c in word.lower()]
